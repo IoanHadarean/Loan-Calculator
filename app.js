@@ -22,35 +22,32 @@ function calculateResults(e) {
     const totalPayment = document.getElementById('total-payment');
     const totalInterest = document.getElementById('total-interest');
     
-    const principal = parseFloat(amount.value);
-    const calculatedInterest = parseFloat(interest.value / 100 / 12);
-    console.log(calculatedInterest);
-    const calculatedPayments = parseFloat(years.value) * 12;
-    console.log(calculatedPayments);
+    if (amount.value > 0 && interest.value > 0 && years.value > 0) {
+        const principal = parseFloat(amount.value);
+        const calculatedInterest = parseFloat(interest.value / 100 / 12);
+        const calculatedPayments = parseFloat(years.value) * 12;
     
-    // Compute monthly payment
-    const x = Math.pow(1 + calculatedInterest, calculatedPayments);
-    console.log(x);
-    const monthly = (principal*x*calculatedInterest)/(x-1);
-    console.log(monthly);
-    
-    if (isFinite(monthly)) {
-        monthlyPayment.value = monthly.toFixed(2);
-        console.log(monthly.toFixed(2));
-        totalPayment.value = (monthly * calculatedPayments).toFixed(2);
-        console.log(totalPayment.value);
-        totalInterest.value = ((monthly * calculatedPayments)-principal).toFixed(2);
+        // Compute monthly payment
+        const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+        const monthly = (principal*x*calculatedInterest)/(x-1);
         
-        // Show results
-        document.getElementById('results').style.display = 'block';
+        if (isFinite(monthly)) {
+            monthlyPayment.value = monthly.toFixed(2);
+            totalPayment.value = (monthly * calculatedPayments).toFixed(2);
+            totalInterest.value = ((monthly * calculatedPayments)-principal).toFixed(2);
         
-        //Hide loader
-        document.getElementById('loading').style.display = 'none';
+            // Show results
+            document.getElementById('results').style.display = 'block';
         
-    } else {
-        showError('Numbers entered are incorrect');
+            //Hide loader
+            document.getElementById('loading').style.display = 'none';
+        } else {
+            showError('Numbers entered are incorrect');
+        }
     }
-    
+    else {
+        showError('Amount/Interest/Years can not be negative values');
+    }
 }
 
 
