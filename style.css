@@ -1,0 +1,11 @@
+.custom-span {
+    background: grey;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-input {
+    width: 100% !important;
+}
