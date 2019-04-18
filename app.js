@@ -18,6 +18,10 @@ function calculateResults(e) {
     console.log(calculatedPayments);
     
     // Compute monthly payment
+    const x = Math.pow(1 + calculatedInterest, calculatedPayments);
+    console.log(x);
+    const monthly = (principal*x*calculatedInterest)/(x-1);
+    console.log(monthly);
     
     
     
