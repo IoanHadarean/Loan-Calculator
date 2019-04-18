@@ -9,3 +9,7 @@
 .custom-input {
     width: 100% !important;
 }
+
+#loading, #results {
+    display: none;
+}
